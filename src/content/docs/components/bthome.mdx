@@ -59,9 +59,11 @@ so these devices are still recognized when their Bluetooth address changes.
 ## Repeated advertisements
 
 Devices often send the same advertisement several times so that at least one arrives. When the data contains a
-packet ID, a repeated advertisement is ignored. Some firmware, such as pvvx's ATC_MiThermometer, takes turns sending
+packet ID, a repeated advertisement is ignored until the device has sent nothing for 4 seconds.
+Some firmware, such as pvvx's ATC_MiThermometer, takes turns sending
 different data under the same packet ID. These advertisements are all processed: only an advertisement whose content
 was already received with the current packet ID counts as a repeat.
+Without a packet ID, a copy of the previous advertisement is ignored while copies arrive less than 1.2 seconds apart.
 
 ## Supported Sensor Types
 
